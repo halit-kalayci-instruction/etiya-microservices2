@@ -8,3 +8,4 @@ FROM openjdk:17-jdk
 COPY --from=build /app/target/productservice-0.0.1-SNAPSHOT.jar /app/productservice.jar
 CMD java -jar /app/productservice.jar
 EXPOSE 8080
+
