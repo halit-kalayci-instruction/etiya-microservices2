@@ -20,8 +20,11 @@ services:
       - common_network
     depends_on:
       - discovery-server
+      - config-server
     environment:
-      - spring.cloud.config.profile=prod
+      - SPRING_CLOUD_CONFIG_IMPORT=configserver:http://config-server:8888
+      - SPRING_CONFIG_IMPORT=configserver:http://config-server:8888
+      - SPRING_CLOUD_CONFIG_PROFILE=prod
   discovery-server:
     build: ./discoveryserver
     ports:
@@ -38,6 +41,14 @@ services:
       - common_network
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://discovery-server:8181/eureka/
-
+  config-server:
+    build: ./configserver
+    ports:
+      - "8888:8888"
+    networks:
+      - common_network
+    environment:
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=https://github.com/halitkalayci/etiya-microservices-configurations.git
+      - SPRING_CLOUD_CONFIG_SERVER_GIT_DEFAULT-LABEL=master
 networks:
   common_network:
