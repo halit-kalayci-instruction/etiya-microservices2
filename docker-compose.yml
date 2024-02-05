@@ -25,6 +25,7 @@ services:
     depends_on:
       - discovery-server
       - config-server
+      - kafka
     environment:
       - CONFIGURL=http://config-server:8888
       - SPRING_CLOUD_CONFIG_PROFILE=prod
@@ -73,6 +74,8 @@ services:
     image: confluentinc/cp-kafka
     ports:
       - 9092:9092
+    depends_on:
+      - zookeeper
     environment:
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT

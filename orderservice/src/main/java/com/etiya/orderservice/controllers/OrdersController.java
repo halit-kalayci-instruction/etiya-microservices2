@@ -2,6 +2,8 @@ package com.etiya.orderservice.controllers;
 
 import com.etiya.orderservice.clients.ProductClient;
 import com.etiya.orderservice.dtos.SubmitOrderDto;
+import com.etiya.orderservice.kafka.OrderCreatedEvent;
+import com.etiya.orderservice.kafka.OrderProducer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ public class OrdersController
 {
     //private final WebClient.Builder webClientBuilder;
     private final ProductClient productClient;
+    private final OrderProducer orderProducer;
     @PostMapping
     public String submitOrder(@RequestBody SubmitOrderDto orderDto)
     {
@@ -29,9 +32,11 @@ public class OrdersController
                 .retrieve()
                 .bodyToMono(Boolean.class)
                 .block(); */
-        Boolean response = productClient.getStockStatus(orderDto.getProductId());
-        if(response)
-            return "Sipariş oluşturuldu.";
-        return "Sipariş oluşturulamadı.";
+        //Boolean response = productClient.getStockStatus(orderDto.getProductId());
+        //if(!response)
+         //   return "Sipariş oluşturulamadı.";
+
+        orderProducer.sendOrderCreatedEvent(new OrderCreatedEvent(1, "Halit"));
+        return "Sipariş oluşturuldu.";
     }
 }
