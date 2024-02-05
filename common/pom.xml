@@ -5,13 +5,24 @@
   <artifactId>common</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>Archetype - common</name>
+  <packaging>jar</packaging>
   <url>http://maven.apache.org</url>
+  <description>
+  </description>
 
   <distributionManagement>
     <repository>
-      <id></id>
-      <name></name>
-      <url></url>
+      <id>halitkalayci.common</id>
+      <url>https://maven.pkg.jetbrains.space/mycompany/p/projectkey/my-maven-repo</url>
     </repository>
   </distributionManagement>
+
+  <repositories>
+    <repository>
+      <id>space-halitkalaycicommonmicroservices</id>
+      <url>https://maven.pkg.jetbrains.space/halitkalayci/p/main/halitkalaycicommonmicroservices</url>
+    </repository>
+  </repositories>
+
 </project>
+
