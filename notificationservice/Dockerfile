@@ -1,8 +1,3 @@
-FROM maven:3.8.3-openjdk-17 as build
-WORKDIR /app
-COPY . /app/
-RUN mvn clean package -DskipTests
-
-FROM openjdk:17-jdk
-COPY --from=build /app/target/notificationservice-0.0.1-SNAPSHOT.jar /app/notificationservice.jar
+FROM openjdk:17-jdk as build
+COPY target/notificationservice-0.0.1-SNAPSHOT.jar /app/notificationservice.jar
 CMD java -jar /app/notificationservice.jar

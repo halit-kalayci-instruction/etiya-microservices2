@@ -2,14 +2,13 @@ package com.etiya.orderservice.controllers;
 
 import com.etiya.orderservice.clients.ProductClient;
 import com.etiya.orderservice.dtos.SubmitOrderDto;
-import com.etiya.orderservice.kafka.OrderCreatedEvent;
 import com.etiya.orderservice.kafka.OrderProducer;
 import lombok.RequiredArgsConstructor;
+import org.halitkalayci.common.events.OrderCreatedEvent;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.reactive.function.client.WebClient;
 
 @RestController
 @RequestMapping("/api/v1/orders")

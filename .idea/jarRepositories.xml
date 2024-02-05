@@ -7,6 +7,11 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="space-halitkalaycicommonmicroservices" />
+      <option name="name" value="space-halitkalaycicommonmicroservices" />
+      <option name="url" value="https://maven.pkg.jetbrains.space/halitkalayci/p/main/halitkalaycicommonmicroservices" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="spring-milestones" />
       <option name="name" value="Spring Milestones" />
       <option name="url" value="https://repo.spring.io/milestone" />
