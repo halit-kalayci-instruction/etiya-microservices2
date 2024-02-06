@@ -1,16 +1,15 @@
 package com.etiya.exampleservice.business;
 
-import com.etiya.exampleservice.dtos.AddProductRequest;
+import com.etiya.exampleservice.dtos.*;
 import com.etiya.exampleservice.entities.Product;
-import com.etiya.exampleservice.logging.FileLogger;
-import com.etiya.exampleservice.logging.ILogger;
 import com.etiya.exampleservice.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class ProductServiceImpl implements ProductService{
+public class ProductServiceImpl implements ProductService
+{
 
     // Java, C#, JS
 
@@ -26,25 +25,24 @@ public class ProductServiceImpl implements ProductService{
     private final ProductRepository productRepository;
 
     /**
-     *
      * @param request
      */
-    public void add(AddProductRequest request)
-    {
-        if(productRepository.findProductByName(request.getName()).isPresent())
+    public void add(AddProductRequest request) {
+        if (productRepository.findProductByName(request.getName()).isPresent()) {
             throw new RuntimeException("");
-                   Product product = new Product();
-           product.setName(request.getName());
-                   productRepository.save(product);
+        }
+        Product product = new Product();
+        product.setName(request.getName()); 
+        productRepository.save(product);
     }
 
     /**
      * Kullanıcı adını alarak bu kullanıcı adını verify eder.
+     *
      * @param username verify edilecek username değeri.
      * @return verify işleminin gerçekleşip gerçekleşmediği bilgisini döndürür.
      */
-    public boolean verify(String username)
-    {
+    public boolean verify(String username) {
         return true;
     }
 }
