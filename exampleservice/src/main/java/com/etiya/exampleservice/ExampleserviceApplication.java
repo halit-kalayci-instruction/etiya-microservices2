@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExampleserviceApplication {
 
 	public static void main(String[] args) {
+		// JavaDoc => Summary
 		SpringApplication.run(ExampleserviceApplication.class, args);
 	}
 	// SOLID ==> OOP Principles

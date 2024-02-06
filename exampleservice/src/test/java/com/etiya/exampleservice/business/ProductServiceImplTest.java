@@ -46,6 +46,7 @@ class ProductServiceImplTest {
         AddProductRequest addProductRequest = new AddProductRequest("Laptop");
 
         productService.add(addProductRequest);
+        productService.verify("");
         assert true;
     }
 }

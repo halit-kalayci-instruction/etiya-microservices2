@@ -1,6 +1,7 @@
 package com.etiya.exampleservice.controllers;
 
 
+import com.etiya.exampleservice.business.ProductService;
 import com.etiya.exampleservice.business.ProductServiceImpl;
 import com.etiya.exampleservice.logging.DbLogger;
 import com.etiya.exampleservice.logging.FileLogger;
@@ -15,9 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/products")
 public class ProductsController {
 
-    private ProductServiceImpl productService;
+    private ProductService productService;
 
     @PostMapping
     public void add() {
+        productService.add(null);
     }
 }
